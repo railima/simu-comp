@@ -5,8 +5,17 @@
     <RootNamespace>simu_comp</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\rai16\source\repos\simu-comp\simu-comp\WebApi.xml</DocumentationFile>
+    <OutputPath>bin\Debug\netcoreapp3.0\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 
   <ItemGroup>
