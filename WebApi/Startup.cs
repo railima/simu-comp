@@ -1,6 +1,8 @@
 using Autofac;
+using Infrastructure.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +34,9 @@ namespace simu_comp
                     Description = "WebApi criada para o teste da Fortes Tecnologia."
                 });
             });
+
+            services.AddDbContext<CompraContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
