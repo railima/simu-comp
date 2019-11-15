@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using WebApi.Module;
 
 namespace simu_comp
@@ -37,6 +38,12 @@ namespace simu_comp
 
             services.AddDbContext<CompraContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
