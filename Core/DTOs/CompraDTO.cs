@@ -16,14 +16,12 @@ namespace Core.DTOs
         public int QuantidadeParcela { get; set; }
         public double Valor { get; set; }
         public double ValorTotalJurosSimples { get; set; }
-        public double ValorTotalJurosComposto { get; set; }
         public ICollection<ParcelaInfo> Parcelas { get; set; }
     }
     public class ParcelaInfo
     {
         public DateTime DataVencimento { get; set; }
         public double ValorJurosSimples { get; set; }
-        public double ValorJurosComposto { get; set; }
 
     }
 }

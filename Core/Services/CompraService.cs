@@ -1,5 +1,4 @@
 ﻿using Core.DTOs;
-using Core.Entities;
 using Core.Interfaces;
 using Core.Interfaces.ICommandHandlers;
 using Core.Interfaces.IServices;
@@ -24,7 +23,7 @@ namespace Core.Services
             var compras = _compraRepository.GetAll();
             var comprasDTO = new List<CompraDTO>();
 
-            //TODO: SALVAR DESSA FORMA IN MEMORY E BUSCAR ASSIM
+            ////TODO: SALVAR DESSA FORMA IN MEMORY E BUSCAR ASSIM
             foreach (var compra in compras)
             {
                 var compraDTO = new CompraDTO
@@ -36,20 +35,18 @@ namespace Core.Services
                     QuantidadeParcela = compra.QuantidadeParcela,
                     Valor = compra.Valor,
                     ValorTotalJurosSimples = 0,
-                    ValorTotalJurosComposto = 0,
                     Parcelas = new List<ParcelaInfo>()
                 };
 
                 for (int i = 0; i < compra.QuantidadeParcela; i++)
                 {
+                    var valorPrestacaoSimples = (compra.Valor * Math.Pow((1 + (compra.Juros / 100)), compra.QuantidadeParcela) * (compra.Juros / 100)) / (Math.Pow((1 + (compra.Juros / 100)), compra.QuantidadeParcela) - 1);
                     var parcela = new ParcelaInfo
                     {
-                        DataVencimento = compra.Data.AddDays(30*i),
-                        ValorJurosSimples = Math.Round((compra.Valor / compra.QuantidadeParcela) * (1 + compra.Juros * compra.QuantidadeParcela), 4),
-                        ValorJurosComposto = Math.Round((compra.Valor / compra.QuantidadeParcela) * Math.Pow((1 + compra.Juros), compra.QuantidadeParcela), 4)
+                        DataVencimento = compra.Data.AddDays(30 * (i + 1)),
+                        ValorJurosSimples = Math.Round(valorPrestacaoSimples, 2),
                     };
-                    compraDTO.ValorTotalJurosSimples += parcela.ValorJurosSimples;
-                    compraDTO.ValorTotalJurosComposto += parcela.ValorJurosComposto;
+                    compraDTO.ValorTotalJurosSimples = Math.Round(valorPrestacaoSimples * compra.QuantidadeParcela, 2);
                     compraDTO.Parcelas.Add(parcela);
                 }
 

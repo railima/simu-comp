@@ -1,8 +1,8 @@
 ﻿using Core.DTOs;
-using Core.Entities;
 using Core.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+
 
 namespace WebApi.Controllers
 {
