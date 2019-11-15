@@ -1,4 +1,4 @@
-﻿using Core.Commands;
+﻿using Core.DTOs;
 using Core.Entities;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ namespace Core.Interfaces.IServices
 {
     public interface ICompraService
     {
-        bool Salvar(CompraCommand compra);
-        IEnumerable<Compra> GetAll();
+        bool Salvar(CompraDTO compra);
+        IEnumerable<CompraDTO> GetAll();
     }
 }
