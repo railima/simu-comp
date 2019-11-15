@@ -8,6 +8,16 @@ namespace Core.Entities
 {
     public class Compra
     {
+        public Compra(string descricao, decimal? jurosSimples, decimal? jurosCompostos, DateTime data, int parcelas, decimal valor) 
+        {
+            Descricao = descricao;
+            JurosSimples = jurosSimples;
+            JurosCompostos = jurosCompostos;
+            Data = data;
+            Parcelas = parcelas;
+            Valor = valor;
+        }
+
         public int Id { get; set; }
         [Required]
         [MaxLength(100)]

@@ -15,6 +15,5 @@ namespace Infrastructure.DataAccess
         {
             modelBuilder.Entity<Compra>().ToTable("Compra");
         }
-
     }
 }
