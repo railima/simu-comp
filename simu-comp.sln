@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{025F2A2A-ABD0-4604-9B73-8CE056251D22}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simu-comp-api", "simu-comp-api", "{7D5220A6-21D5-4309-9424-30A07CDD33AE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +30,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9CADC6AC-8041-4A5A-99B0-1C673750A282} = {7D5220A6-21D5-4309-9424-30A07CDD33AE}
-		{0A986A71-1C3E-4EA2-A736-D714CE34FC89} = {7D5220A6-21D5-4309-9424-30A07CDD33AE}
-		{025F2A2A-ABD0-4604-9B73-8CE056251D22} = {7D5220A6-21D5-4309-9424-30A07CDD33AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69E660FA-0DA5-4C69-8B2C-27CAA6EBA7A4}
