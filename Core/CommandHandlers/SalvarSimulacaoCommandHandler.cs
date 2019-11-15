@@ -1,11 +1,12 @@
-﻿using Core.Commands;
+﻿using Core.DTOs;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Interfaces.ICommandHandlers;
 using System;
 
 namespace Core.CommandHandlers
 {
-    public class SalvarSimulacaoCommandHandler
+    public class SalvarSimulacaoCommandHandler : ISalvarSimulacaoCommandHandler
     {
         private readonly ICompraRepository _compraRepository;
 
@@ -14,14 +15,13 @@ namespace Core.CommandHandlers
             _compraRepository = compraRepository;
         }
 
-        public bool Handle(CompraCommand command)
+        public bool Handle(CompraDTO dto)
         {
-            var compra = new Compra(command.Descricao, command.JurosSimples, 
-                command.JurosCompostos, command.Data, command.Parcelas, command.Valor);
+            var novaCompra = new Compra(dto.Descricao, dto.Juros, dto.Data, dto.QuantidadeParcela, dto.Valor);
 
             try
             {
-                _compraRepository.Salvar(compra);
+                _compraRepository.Salvar(novaCompra);
                 return true;
             }
             catch (Exception)
