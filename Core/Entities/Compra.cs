@@ -8,30 +8,34 @@ namespace Core.Entities
 {
     public class Compra
     {
-        public Compra(string descricao, decimal? jurosSimples, decimal? jurosCompostos, DateTime data, int parcelas, decimal valor) 
+        public Compra(string descricao, double juros, DateTime data, int parcela, double valor) 
         {
             Descricao = descricao;
-            JurosSimples = jurosSimples;
-            JurosCompostos = jurosCompostos;
+            Juros = juros;
             Data = data;
-            Parcelas = parcelas;
+            QuantidadeParcela = parcela;
             Valor = valor;
+        }
+
+        public Compra()
+        {
+
         }
 
         public int Id { get; set; }
         [Required]
         [MaxLength(100)]
         public string Descricao { get; set; }
-        [Column(TypeName = "decimal(4, 4)")]
-        public decimal? JurosSimples { get; set; }
-        [Column(TypeName = "decimal(4, 4)")]
-        public decimal? JurosCompostos { get; set; }
         [Required]
+        [Column(TypeName = "decimal(15, 4)")]
+        public double Juros { get; set; }
+        [Required]
+        [Column(TypeName = "datetime")]
         public DateTime Data { get; set; }
         [Required]
-        public int Parcelas { get; set; }
-        [Column(TypeName = "decimal(4, 2)")]
+        public int QuantidadeParcela { get; set; }
+        [Column(TypeName = "decimal(15, 2)")]
         [Required]
-        public decimal Valor { get; set; }
+        public double Valor { get; set; }
     }
 }
