@@ -4,14 +4,16 @@ using Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CompraContext))]
-    partial class CompraContextModelSnapshot : ModelSnapshot
+    [Migration("20191115054119_REMOVE_COLUNA_DUPLICADA_JUROS")]
+    partial class REMOVE_COLUNA_DUPLICADA_JUROS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

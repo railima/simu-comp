@@ -4,14 +4,16 @@ using Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CompraContext))]
-    partial class CompraContextModelSnapshot : ModelSnapshot
+    [Migration("20191115041457_ALTERA_TIPO_COLUNAS_DECIMAIS")]
+    partial class ALTERA_TIPO_COLUNAS_DECIMAIS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,10 +36,13 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<decimal>("Juros")
+                    b.Property<decimal?>("JurosCompostos")
                         .HasColumnType("decimal(15, 4)");
 
-                    b.Property<int>("QuantidadeParcela")
+                    b.Property<decimal?>("JurosSimples")
+                        .HasColumnType("decimal(15, 4)");
+
+                    b.Property<int>("Parcelas")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Valor")
