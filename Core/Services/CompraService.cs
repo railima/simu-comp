@@ -23,7 +23,6 @@ namespace Core.Services
             var compras = _compraRepository.GetAll();
             var comprasDTO = new List<CompraDTO>();
 
-            ////TODO: SALVAR DESSA FORMA IN MEMORY E BUSCAR ASSIM
             foreach (var compra in compras)
             {
                 var compraDTO = new CompraDTO
