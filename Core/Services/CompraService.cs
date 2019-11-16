@@ -37,20 +37,7 @@ namespace Core.Services
                     ValorTotalJurosSimples = 0,
                     Parcelas = new List<ParcelaInfo>()
                 };
-
-                for (int i = 0; i < compra.QuantidadeParcela; i++)
-                {
-                    var valorPrestacaoSimples = (compra.Valor * Math.Pow((1 + (compra.Juros / 100)), compra.QuantidadeParcela) * (compra.Juros / 100)) / (Math.Pow((1 + (compra.Juros / 100)), compra.QuantidadeParcela) - 1);
-                    var parcela = new ParcelaInfo
-                    {
-                        DataVencimento = compra.Data.AddDays(30 * (i + 1)),
-                        ValorJurosSimples = Math.Round(valorPrestacaoSimples, 2),
-                        Valor = Math.Round(compra.Valor / compra.QuantidadeParcela, 2),
-                        Numero = i + 1
-                    };
-                    compraDTO.ValorTotalJurosSimples = Math.Round(valorPrestacaoSimples * compra.QuantidadeParcela, 2);
-                    compraDTO.Parcelas.Add(parcela);
-                }
+                compraDTO.Parcelas = Simular(compra.Valor, compra.Juros, compra.QuantidadeParcela, compra.Data).Parcelas;
 
                 comprasDTO.Add(compraDTO);
             }
