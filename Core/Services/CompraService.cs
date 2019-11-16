@@ -36,8 +36,9 @@ namespace Core.Services
                     ValorTotalJurosSimples = 0,
                     Parcelas = new List<ParcelaInfo>()
                 };
-                compraDTO.Parcelas = Simular(compra.Valor, compra.Juros, compra.QuantidadeParcela, compra.Data).Parcelas;
-
+                var compraCalculada = Simular(compra.Valor, compra.Juros, compra.QuantidadeParcela, compra.Data);
+                compraDTO.Parcelas = compraCalculada.Parcelas;
+                compraDTO.ValorTotalJurosSimples = compraCalculada.ValorTotalJurosSimples;
                 comprasDTO.Add(compraDTO);
             }
             return comprasDTO;
