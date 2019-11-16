@@ -1,5 +1,6 @@
 ﻿using Core.DTOs;
 using Core.Interfaces.IServices;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
