@@ -45,6 +45,8 @@ namespace Core.Services
                     {
                         DataVencimento = compra.Data.AddDays(30 * (i + 1)),
                         ValorJurosSimples = Math.Round(valorPrestacaoSimples, 2),
+                        Valor = Math.Round(compra.Valor / compra.QuantidadeParcela, 2),
+                        Numero = i + 1
                     };
                     compraDTO.ValorTotalJurosSimples = Math.Round(valorPrestacaoSimples * compra.QuantidadeParcela, 2);
                     compraDTO.Parcelas.Add(parcela);
@@ -62,6 +64,29 @@ namespace Core.Services
                 return true;
             }
             return false;
+        }
+
+        public CompraDTO Simular(double valor, double juros, int quantidadeParcela, DateTime data)
+        {
+            var compraDTO = new CompraDTO
+            {
+                Parcelas = new List<ParcelaInfo>()
+            };
+            for (int i = 0; i < quantidadeParcela; i++)
+            {
+                var valorPrestacaoSimples = (valor * Math.Pow((1 + (juros / 100)), quantidadeParcela) * (juros / 100)) / (Math.Pow((1 + (juros / 100)), quantidadeParcela) - 1);
+                var parcela = new ParcelaInfo
+                {
+                    DataVencimento = data.AddDays(30 * (i + 1)),
+                    ValorJurosSimples = Math.Round(valorPrestacaoSimples, 2),
+                    Valor = Math.Round(valor / quantidadeParcela, 2),
+                    Numero = i + 1
+                };
+                compraDTO.ValorTotalJurosSimples = Math.Round(valorPrestacaoSimples * quantidadeParcela, 2);
+                compraDTO.Parcelas.Add(parcela);
+            }
+
+            return compraDTO;
         }
     }
 }

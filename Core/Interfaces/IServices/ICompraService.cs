@@ -8,5 +8,6 @@ namespace Core.Interfaces.IServices
     {
         bool Salvar(CompraDTO compra);
         IEnumerable<CompraDTO> GetAll();
+        CompraDTO Simular(double valor, double juros, int quantidadeParcela, System.DateTime data);
     }
 }

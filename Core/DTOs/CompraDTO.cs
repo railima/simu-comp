@@ -22,6 +22,8 @@ namespace Core.DTOs
     {
         public DateTime DataVencimento { get; set; }
         public double ValorJurosSimples { get; set; }
+        public double Valor { get; set; }
+        public int Numero { get; set; }
 
     }
 }
